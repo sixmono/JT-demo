@@ -61,8 +61,8 @@ export default {
       },
       { "http-equiv": "Content-Type", content: "text/html;charset=gb2312" },
       // http 改成https
-      // { "http-equiv": "Content-Security-Policy",content:"upgrade-insecure-requests"},
-      { "http-equiv": "Content-Security-Policy"},
+      { "http-equiv": "Content-Security-Policy",content:"upgrade-insecure-requests"},
+      // { "http-equiv": "Content-Security-Policy"},
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
       {
