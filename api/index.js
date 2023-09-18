@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const configUrl = "http://106.14.32.178:8080/api";
+const configUrl = "https://106.14.32.178:8080/api";
 
 const axiosURL = axios.create({
   timeout: 5000,

@@ -60,6 +60,8 @@ export default {
         content: "98db2ba1debf9a2cf8f63cb4c78638cd_1690276336",
       },
       { "http-equiv": "Content-Type", content: "text/html;charset=gb2312" },
+      // http 改成https
+      // { "http-equiv": "Content-Security-Policy",content:"upgrade-insecure-requests"},
       { "http-equiv": "Content-Security-Policy"},
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
