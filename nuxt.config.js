@@ -96,38 +96,38 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
 
   modules: [
-    "@nuxtjs/axios",
-    "@nuxtjs/proxy",
-    // [
     // "@nuxtjs/axios",
-    // {
-    //   devServer: {
-    //     proxy: {
-    //       "/api": {
-    //         target: "https://106.14.32.178:8080",
-    //         changeOrigin: true,
-    //         ws: true,
-    //         pathRewrite: {
-    //           "^/api": "",
-    //         },
-    //       },
-    //     },
-    //   },
-    // },
-    // ],
-  ],
-  axios: {
-    //是否开启跨域
-    proxy: true,
-  },
-  proxy: {
-    "/api": {
-      target: "https://106.14.32.178:8080",
-      pathRewrite: {
-        "^/api": "",
+    // "@nuxtjs/proxy",
+    [
+    "@nuxtjs/axios",
+    {
+      devServer: {
+        proxy: {
+          "/api": {
+            target: "https://106.14.32.178:8080",
+            changeOrigin: true,
+            ws: true,
+            pathRewrite: {
+              "^/api": "",
+            },
+          },
+        },
       },
     },
-  },
+    ],
+  ],
+  // axios: {
+  //   //是否开启跨域
+  //   proxy: true,
+  // },
+  // proxy: {
+  //   "/api": {
+  //     target: "https://106.14.32.178:8080",
+  //     pathRewrite: {
+  //       "^/api": "",
+  //     },
+  //   },
+  // },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     /*
