@@ -99,21 +99,26 @@ export default {
     // "@nuxtjs/axios",
     // "@nuxtjs/proxy",
     [
-    "@nuxtjs/axios",
-    {
-      devServer: {
-        proxy: {
-          "/api": {
-            target: "https://106.14.32.178:8080",
-            changeOrigin: true,
-            ws: true,
-            pathRewrite: {
-              "^/api": "https://106.14.32.178:8080",
+      "@nuxtjs/axios",
+      {
+        devServer: {
+          host: "8080", // 端口号
+          https: true, // 是否使用https协议
+          hotOnly: false, // 是否开启热更新
+          proxy: {
+            "/api": {
+              target: "https://106.14.32.178:8080",
+              url:"https://106.14.32.178:8080",
+              changeOrigin: true,
+              secure: true,
+              ws: true,
+              pathRewrite: {
+                "/api": "",
+              },
             },
           },
         },
       },
-    },
     ],
   ],
   // axios: {

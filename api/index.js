@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosURL = axios.create({
   timeout: 5000,
-  baseURL: "/api",
+  baseURL: process.env.NODE_ENV === 'production' ? '/' : 'https://106.14.32.178:8080/api',
   headers: {
     "Content-Type": "application/json;charset=UTF-8",
   },
@@ -64,6 +64,7 @@ export function getSolution(params) {
   };
   return response(options);
 }
+
 // 我们的案例
 export function getServers(params) {
   const options = {
@@ -92,6 +93,7 @@ export function getNews(params) {
   };
   return response(options);
 }
+
 // 留言
 export function getMessage(params) {
   const options = {
@@ -101,6 +103,7 @@ export function getMessage(params) {
   };
   return response(options);
 }
+
 response(options)
   .then((res) => {
     console.log(res.data);
