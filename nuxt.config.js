@@ -65,7 +65,7 @@ export default {
         "http-equiv": "Content-Security-Policy",
         content: "upgrade-insecure-requests",
       },
-      { "Content-Security-Policy": true },
+      { "Content-Security-Policy": "true" },
       // { "http-equiv": "Content-Security-Policy" },
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
@@ -96,24 +96,38 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
 
   modules: [
-    [
-      "@nuxtjs/axios",
-      {
-        devServer: {
-          proxy: {
-            "/api": {
-              target: "https://106.14.32.178:8080",
-              changeOrigin: true,
-              ws: true,
-              pathRewrite: {
-                "^/api": "",
-              },
-            },
-          },
-        },
-      },
-    ],
+    "@nuxtjs/axios",
+    "@nuxtjs/proxy",
+    // [
+    // "@nuxtjs/axios",
+    // {
+    //   devServer: {
+    //     proxy: {
+    //       "/api": {
+    //         target: "https://106.14.32.178:8080",
+    //         changeOrigin: true,
+    //         ws: true,
+    //         pathRewrite: {
+    //           "^/api": "",
+    //         },
+    //       },
+    //     },
+    //   },
+    // },
+    // ],
   ],
+  axios: {
+    //是否开启跨域
+    proxy: true,
+  },
+  proxy: {
+    "/api": {
+      target: "http://106.14.32.178:8080",
+      pathRewrite: {
+        "^/api": "",
+      },
+    },
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     /*
