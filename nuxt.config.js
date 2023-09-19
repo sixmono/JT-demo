@@ -108,7 +108,7 @@ export default {
             changeOrigin: true,
             ws: true,
             pathRewrite: {
-              "^/api": "",
+              "^/api": "https://106.14.32.178:8080",
             },
           },
         },
