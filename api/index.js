@@ -1,5 +1,4 @@
 import axios from "axios";
-import jsonp from "jsonp"
 
 const configUrl = "https://106.14.32.178:8080/api";
 
@@ -37,14 +36,6 @@ const options = {
   url: "", // 接口地址
   method: "", // 请求方式
 };
-
-jsonp('https://106.14.32.178:8080/api', (err, data) => {
-  if (err) {
-    console.error(err.message);
-  } else {
-    console.log(data);
-  }
-});
 // 简介
 export function getBrief(params) {
   const options = {

@@ -96,31 +96,31 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
 
   modules: [
-    // "@nuxtjs/axios",
+    "@nuxtjs/axios",
     // "@nuxtjs/proxy",
-    [
-      "@nuxtjs/axios",
-      "vue-cors",
-      {
-        devServer: {
-          host: "8080", // 端口号
-          https: true, // 是否使用https协议
-          hotOnly: false, // 是否开启热更新
-          proxy: {
-            "/api": {
-              target: "https://106.14.32.178:8080",
-              url: "https://106.14.32.178:8080",
-              changeOrigin: true,
-              secure: true,
-              ws: true,
-              pathRewrite: {
-                "/api": "",
-              },
-            },
-          },
-        },
-      },
-    ],
+    // [
+    //   "@nuxtjs/axios",
+    //   "vue-cors",
+    //   {
+    //     devServer: {
+    //       host: "8080", // 端口号
+    //       https: true, // 是否使用https协议
+    //       hotOnly: false, // 是否开启热更新
+    //       proxy: {
+    //         "/api": {
+    //           target: "https://106.14.32.178:8080",
+    //           url: "https://106.14.32.178:8080",
+    //           changeOrigin: true,
+    //           secure: true,
+    //           ws: true,
+    //           pathRewrite: {
+    //             "/api": "",
+    //           },
+    //         },
+    //       },
+    //     },
+    //   },
+    // ],
   ],
   // axios: {
   //   //是否开启跨域

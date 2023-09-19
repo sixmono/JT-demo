@@ -1,0 +1,3 @@
+from = "/api/*"
+to = "http://106.14.32.178:8080/api"
+status = 200 
