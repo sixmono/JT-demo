@@ -1,14 +1,17 @@
 import axios from "axios";
+import jsonp from "jsonp";
 
 const configUrl = "http://106.14.32.178:8080/api";
 
-const axiosURL = axios.create({
-  timeout: 5000,
-  baseURL: configUrl,
-  headers: {
-    "Content-Type": "application/json;charset=UTF-8",
-  },
-});
+const axiosURL = jsonp(
+  axios.create({
+    timeout: 5000,
+    baseURL: configUrl,
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  })
+);
 
 // function response (options) {
 //     return new Promise((resolve, reject) => {

@@ -285,6 +285,7 @@ onMounted(() => {
       "https://jt-phone-1312712349.cos.ap-shanghai.myqcloud.com/index.html"; //手机
   }
 });
+
 const activeKey = ref(0);
 const activeKeyList = ref(1);
 // 概况

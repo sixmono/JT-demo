@@ -16,9 +16,11 @@
     "cheerio": "^1.0.0-rc.12",
     "core-js": "^3.25.3",
     "dayjs": "^1.11.9",
+    "https": "^1.0.0",
     "jsonp": "^0.2.1",
     "nuxt": "^2.15.8",
     "vue": "^2.7.10",
+    "vue-cookie": "^1.1.4",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10"
   },

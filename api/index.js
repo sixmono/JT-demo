@@ -1,8 +1,11 @@
 import axios from "axios";
+import jsonp from "jsonp"
+
+const configUrl = "https://106.14.32.178:8080/api";
 
 const axiosURL = axios.create({
   timeout: 5000,
-  baseURL: process.env.NODE_ENV === 'production' ? '/' : 'https://106.14.32.178:8080/api',
+  baseURL: configUrl,
   headers: {
     "Content-Type": "application/json;charset=UTF-8",
   },
@@ -35,6 +38,13 @@ const options = {
   method: "", // 请求方式
 };
 
+jsonp('https://106.14.32.178:8080/api', (err, data) => {
+  if (err) {
+    console.error(err.message);
+  } else {
+    console.log(data);
+  }
+});
 // 简介
 export function getBrief(params) {
   const options = {
@@ -55,6 +65,7 @@ export function getAdvantage(params) {
   return response(options);
 }
 
+
 // 技术能力
 export function getSolution(params) {
   const options = {
@@ -64,7 +75,6 @@ export function getSolution(params) {
   };
   return response(options);
 }
-
 // 我们的案例
 export function getServers(params) {
   const options = {
@@ -88,22 +98,20 @@ export function getCases(params) {
 export function getNews(params) {
   const options = {
     url: "/news",
-    method: "get",
+    method: "get", 
     params: params,
   };
   return response(options);
 }
-
 // 留言
 export function getMessage(params) {
   const options = {
     url: `/message`,
     method: "post",
-    data: { ...params },
+    data: {...params},
   };
   return response(options);
 }
-
 response(options)
   .then((res) => {
     console.log(res.data);
