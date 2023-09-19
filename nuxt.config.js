@@ -1,19 +1,19 @@
-import cheerio from "cheerio"
+import cheerio from "cheerio";
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   ssr: true,
   hooks: {
-    'render:route': (url, result) => {
-       const ara= cheerio.load(result.html,{decodeEntities: false});
-       ara(`meta`).removeAttr('data-n-head');
-       result.html = ara.html()
-     },
-     generate: {
+    "render:route": (url, result) => {
+      const ara = cheerio.load(result.html, { decodeEntities: false });
+      ara(`meta`).removeAttr("data-n-head");
+      result.html = ara.html();
+    },
+    generate: {
       page(page) {
         const cheerio = require("cheerio");
         const $ = cheerio.load(page.html, { decodeEntities: false });
- 
+
         const attrs = [
           "data-n-head-ssr",
           "data-n-head",
@@ -21,15 +21,15 @@ export default {
           "data-vue-ssr-id",
           "data-server-rendered",
         ];
- 
-        attrs.forEach(value => {
+
+        attrs.forEach((value) => {
           $("*[" + value + "]").removeAttr(value);
         });
-        
+
         page.html = $.html();
-      }
-    }
-   },
+      },
+    },
+  },
   head: {
     title: "上海疆通科技有限公司",
     htmlAttrs: {
@@ -61,8 +61,12 @@ export default {
       },
       { "http-equiv": "Content-Type", content: "text/html;charset=gb2312" },
       // http 改成https
-      { "http-equiv": "Content-Security-Policy",content:"upgrade-insecure-requests"},
-      // { "http-equiv": "Content-Security-Policy"},
+      {
+        "http-equiv": "Content-Security-Policy",
+        content: "upgrade-insecure-requests",
+      },
+      { "Content-Security-Policy": true },
+      // { "http-equiv": "Content-Security-Policy" },
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
       {
@@ -90,33 +94,49 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
+
   modules: [
-    "@nuxtjs/axios",
+    [
+      "@nuxtjs/axios",
+      {
+        devServer: {
+          proxy: {
+            "/api": {
+              target: "https://106.14.32.178:8080",
+              changeOrigin: true,
+              ws: true,
+              pathRewrite: {
+                "^/api": "",
+              },
+            },
+          },
+        },
+      },
+    ],
   ],
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     /*
      ** Run ESLINT on save
      */
-    extend (config, ctx) {
+    extend(config, ctx) {
       if (ctx.Client) {
         config.module.rules.push({
-          enforce: 'pre',
+          enforce: "pre",
           test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
+          loader: "eslint-loader",
+          exclude: /(node_modules)/,
+        });
       }
-    }
+    },
   },
   target: "static",
   ssr: false,
   router: {
-    mode: 'history'
+    mode: "history",
   },
   generate: {
     dir: "docs",
     fallback: false,
   },
-
 };

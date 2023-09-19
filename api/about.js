@@ -1,12 +1,15 @@
 import axios from "axios";
 
-const configUrl = "http://106.14.32.178:8080/api";
+const configUrl = "https://106.14.32.178:8080/api";
 
 const axiosURL = axios.create({
   timeout: 5000,
   baseURL: configUrl,
   headers: {
     "Content-Type": "application/json;charset=UTF-8",
+    "Access-Control-Allow-Origin": "https://106.14.32.178:8080/api",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
   },
 });
 
@@ -59,13 +62,13 @@ export function getCertificate(params) {
 
 // 企业证书
 export function getBusiness(params) {
-    const options = {
-      url: `/business`,
-      method: "get",
-      data: { ...params },
-    };
-    return response(options);
-  }
+  const options = {
+    url: `/business`,
+    method: "get",
+    data: { ...params },
+  };
+  return response(options);
+}
 
 //   我们的客户服务
 export function getCustomer(params) {

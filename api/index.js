@@ -1,10 +1,8 @@
 import axios from "axios";
 
-const configUrl = "http://106.14.32.178:8080/api";
-
 const axiosURL = axios.create({
   timeout: 5000,
-  baseURL: configUrl,
+  baseURL: "/api",
   headers: {
     "Content-Type": "application/json;charset=UTF-8",
   },
@@ -37,7 +35,6 @@ const options = {
   method: "", // 请求方式
 };
 
-
 // 简介
 export function getBrief(params) {
   const options = {
@@ -57,7 +54,6 @@ export function getAdvantage(params) {
   };
   return response(options);
 }
-
 
 // 技术能力
 export function getSolution(params) {
@@ -91,7 +87,7 @@ export function getCases(params) {
 export function getNews(params) {
   const options = {
     url: "/news",
-    method: "get", 
+    method: "get",
     params: params,
   };
   return response(options);
@@ -101,7 +97,7 @@ export function getMessage(params) {
   const options = {
     url: `/message`,
     method: "post",
-    data: {...params},
+    data: { ...params },
   };
   return response(options);
 }
