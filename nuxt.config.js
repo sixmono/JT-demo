@@ -122,7 +122,7 @@ export default {
   },
   proxy: {
     "/api": {
-      target: "http://106.14.32.178:8080",
+      target: "https://106.14.32.178:8080",
       pathRewrite: {
         "^/api": "",
       },
